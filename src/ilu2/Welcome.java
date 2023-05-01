@@ -40,12 +40,12 @@ public class Welcome {
 		ArrayList<String> minuscules = new ArrayList<String>();
 		for (int i = 0; i < input.length; i++) {
 			if (!input[i].equals(input[i].toUpperCase())) {
-				minuscules.add(input[i]);
+				minuscules.add(input[i].trim());
 			}
 		}
 		for (int i = 0; i < input.length; i++) {
 			if (input[i].equals(input[i].toUpperCase())) {
-				majuscules.add(input[i]);
+				majuscules.add(input[i].trim());
 			}
 		}
 		partieMinuscule(minuscules, reponse);
