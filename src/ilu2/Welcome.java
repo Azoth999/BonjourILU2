@@ -8,8 +8,8 @@ public class Welcome {
 		if (input == null || input.trim().isEmpty()) {
 			return casNull(reponse).toString();
 		}
-		if (input.split(",").length==2) {
-			return casDouble(input.split(","),reponse).toString();
+		if (input.split(",").length>=2) {
+			return casMultiple(input.split(","),reponse);
 		}
 		if (input.equals(input.toUpperCase()))
 			return casUpperCase(input,reponse);
@@ -33,10 +33,12 @@ public class Welcome {
 		return reponse.toString();
 	}
 	
-	private String casDouble(String[] input, StringBuilder reponse) {
-		casBase(input[0], reponse);
-		reponse.append(", ");
-		casBase(input[1], reponse);
+	private String casMultiple(String[] input, StringBuilder reponse) {
+		for (int i = 0; i < input.length-1; i++) {
+			casBase(input[i], reponse);
+			reponse.append(", ");
+		}
+		casBase(input[input.length-1], reponse);
 		return reponse.toString();
 	}
 }
