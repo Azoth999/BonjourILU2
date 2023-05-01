@@ -1,12 +1,14 @@
 package ilu2;
 
+import java.util.ArrayList;
+
 public class Welcome {
 	
 	
 	public String welcome(String input) {
 		StringBuilder reponse = new StringBuilder("Hello, ");
 		if (input == null || input.trim().isEmpty()) {
-			return casNull(reponse).toString();
+			return casNull(reponse);
 		}
 		if (input.split(",").length>=2) {
 			return casMultiple(input.split(","),reponse);
@@ -34,11 +36,43 @@ public class Welcome {
 	}
 	
 	private String casMultiple(String[] input, StringBuilder reponse) {
-		for (int i = 0; i < input.length-1; i++) {
-			casBase(input[i], reponse);
+		ArrayList<String> majuscules = new ArrayList<String>();
+		ArrayList<String> minuscules = new ArrayList<String>();
+		for (int i = 0; i < input.length; i++) {
+			if (!input[i].equals(input[i].toUpperCase())) {
+				minuscules.add(input[i]);
+			}
+		}
+		for (int i = 0; i < input.length; i++) {
+			if (input[i].equals(input[i].toUpperCase())) {
+				majuscules.add(input[i]);
+			}
+		}
+		partieMinuscule(minuscules, reponse);
+		partieMajuscule(majuscules, reponse);
+		return reponse.toString();
+	}
+	
+	private String partieMinuscule(ArrayList<String> minuscules, StringBuilder reponse) {
+		for (int i = 0; i < minuscules.size()-1; i++) {
+			casBase(minuscules.get(i), reponse);
 			reponse.append(", ");
 		}
-		casBase(input[input.length-1], reponse);
+		casBase(minuscules.get(minuscules.size()-1), reponse);
+		return reponse.toString();
+	}
+	
+	private String partieMajuscule(ArrayList<String> majuscules, StringBuilder reponse) {
+		if (majuscules.isEmpty()) {
+			return reponse.toString();
+		}
+		reponse.append(". AND HELLO, ");
+		for (int i = 0; i < majuscules.size()-1; i++) {
+			reponse.append(majuscules.get(i).toUpperCase());
+			reponse.append(", ");
+		}
+		reponse.append(majuscules.get(majuscules.size()-1).toUpperCase());
+		reponse.append("!");
 		return reponse.toString();
 	}
 }
