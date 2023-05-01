@@ -43,4 +43,13 @@ class WelcomeTest {
 		assertEquals("Hello, Amy, Francis. AND HELLO, BOB!", bonjour.welcome("amy,BOB,francis"));
 	}
 
+	
+	//Le "and" qui remplace la dernière virgule rend les tests 4, 5 et 6 obsolètes
+	//et il n'y a pas de restriction de cas rendant nécessaire la création d'une nouvelle fonction.
+	//Donc il me semble que cette réponse est suffisante dans ce cas là.
+	@Test
+	void ex_7() {
+		assertEquals("Hello, Amy and Francis. AND HELLO, BILLY, ALFRED AND JACK!", bonjour.welcome("amy,BILLY,ALFRED,francis,JACK"));
+	}
+	
 }

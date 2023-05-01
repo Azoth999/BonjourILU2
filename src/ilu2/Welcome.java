@@ -58,6 +58,8 @@ public class Welcome {
 			casBase(minuscules.get(i), reponse);
 			reponse.append(", ");
 		}
+		reponse.deleteCharAt(reponse.length()-2);
+		reponse.append("and ");
 		casBase(minuscules.get(minuscules.size()-1), reponse);
 		return reponse.toString();
 	}
@@ -71,6 +73,8 @@ public class Welcome {
 			reponse.append(majuscules.get(i).toUpperCase());
 			reponse.append(", ");
 		}
+		reponse.deleteCharAt(reponse.length()-2);
+		reponse.append("AND ");
 		reponse.append(majuscules.get(majuscules.size()-1).toUpperCase());
 		reponse.append("!");
 		return reponse.toString();
