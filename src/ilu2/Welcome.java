@@ -76,9 +76,8 @@ public class Welcome {
 	}
 	
 	private String partieMajuscule(HashMap<String,Integer> noms, ArrayList<String> majuscules, StringBuilder reponse) {
-		if (majuscules.isEmpty()) {
+		if (majuscules.isEmpty())
 			return reponse.toString();
-		}
 		if (noms.size() == majuscules.size())
 			reponse.append("HELLO, ");
 		else
@@ -86,8 +85,7 @@ public class Welcome {
 		if(majuscules.size()>1) {
 			for (int i = 0; i < majuscules.size()-1; i++) {
 				casDoublons(majuscules.get(i), reponse, noms);
-				reponse.append(", ");
-			}
+				reponse.append(", ");}
 			reponse.deleteCharAt(reponse.length()-2);
 			reponse.append("AND ");
 			casDoublons(majuscules.get(majuscules.size()-1), reponse, noms);
